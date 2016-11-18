@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.saar.saarhoek_pset3.WatchList"
+    android:weightSum="1">
+
+    <TextView
+        android:text="title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:textSize="34dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:text="year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/year" />
+
+    <TextView
+        android:text="score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/score" />
+
+    <ImageView
+        android:layout_width="158dp"
+        android:layout_height="215dp"
+        app:srcCompat="@drawable/magnify"
+        android:id="@+id/posterview" />
+
+    <Button
+        android:text="Add To Watchlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addlist"
+        android:onClick="listed"
+        style="@style/Widget.AppCompat.Button.Colored" />
+
+    <TextView
+        android:text="director"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/director" />
+
+    <TextView
+        android:text="actors"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/actors" />
+
+    <TextView
+        android:text="plot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/plot"
+        android:layout_weight="0.89" />
+</LinearLayout>
