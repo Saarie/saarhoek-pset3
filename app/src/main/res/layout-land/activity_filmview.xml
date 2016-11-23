@@ -1,63 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.saar.saarhoek_pset3.WatchList"
-    android:weightSum="1">
+    android:layout_width="match_parent"
+    android:fillViewport="true">
 
-    <TextView
-        android:text="title"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/title"
-        android:textSize="34dp"
-        android:textStyle="bold"/>
+        android:layout_height="match_parent"
+        tools:context="com.example.saar.saarhoek_pset3.WatchList"
+        android:weightSum="1">
 
-    <TextView
-        android:text="year"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/year" />
+        <TextView
+            android:text="title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@+id/posterview"
+            android:id="@+id/title"
+            android:textSize="34dp"
+            android:textStyle="bold"/>
 
-    <TextView
-        android:text="score"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/score" />
+        <TextView
+            android:text="year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/posterview"
+            android:id="@+id/year" />
 
-    <Button
-        android:text="Add To Watchlist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/addlist"
-        android:onClick="listed"
-        style="@style/Widget.AppCompat.Button.Colored" />
+        <TextView
+            android:text="score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/year"
+            android:layout_toRightOf="@+id/posterview"
+            android:id="@+id/score" />
 
-    <TextView
-        android:text="director"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/director" />
+        <Button
+            android:text="Add To Watchlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addlist"
+            android:onClick="listed"
+            android:layout_below="@+id/posterview"
+            style="@style/Widget.AppCompat.Button.Colored" />
 
-    <TextView
-        android:text="actors"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/actors" />
+        <TextView
+            android:text="director"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/score"
+            android:layout_toRightOf="@+id/posterview"
+            android:id="@+id/director" />
 
-    <TextView
-        android:text="plot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/plot"
-        android:layout_weight="0.89" />
+        <TextView
+            android:text="actors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/director"
+            android:layout_toRightOf="@+id/posterview"
+            android:id="@+id/actors" />
 
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="97dp"
-        app:srcCompat="@drawable/magnify"
-        android:id="@+id/posterview" />
-</LinearLayout>
+        <TextView
+            android:text="plot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addlist"
+            android:id="@+id/plot"
+            android:layout_weight="0.89" />
+
+        <ImageView
+            app:srcCompat="@drawable/magnify"
+            android:id="@+id/posterview"
+            android:layout_height="180dp"
+            android:layout_width="140dp" />
+    </RelativeLayout>
+</ScrollView>

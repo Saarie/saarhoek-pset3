@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -23,7 +22,6 @@ import java.net.URL;
 public class FilmGet extends AppCompatActivity {
 
     private String filmtitle;
-    private TextView moview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

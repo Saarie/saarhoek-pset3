@@ -36,28 +36,83 @@ public class WatchList extends AppCompatActivity {
 
         // obtain movie title user wants to add to watch list
         extras = getIntent().getExtras();
-        String from_activity = extras.getString("activity");
-        Setter(from_activity);
+        String coupled = extras.getString("activity");
+        Setter(coupled);
         }
 
-    private void Setter(String from_activity){
-        if (from_activity.equals("add_movie")) {
+    private void Setter(String coupled){
+        if (coupled.equals("add_movie")) {
             listtitle = extras.getString("listtitle");
 
             // write to sharedpreferences
             prefs = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
 
-            // save preferences (value doesn't matter)
+            // save preferences
             editor.putString(listtitle, listtitle);
             editor.commit();
         }
         prefs = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
 
-        // find the listview and create empty array which will contain movie titles
+        // find the list view in xml and create movie title array
         moview = (ListView) findViewById(R.id.listView);
-        String[] movies = {};
+        String[] films = {};
+        arrayList = new ArrayList<>(Arrays.asList(films));
 
-        // TODO
+
+        adapter = new ArrayAdapter<String>(this, R.layout.item_in_list, R.id.textview, arrayList);
+
+        // add keys to list
+        Map<String, ?> keys = prefs.getAll();
+
+        for (Map.Entry<String, ?> entry : keys.entrySet()) {
+            arrayList.add(entry.getKey());
+        }
+
+        // sorting the listview
+        adapter.sort(new Comparator<String>() {
+            @Override
+            public int compare(String lhs, String rhs) {
+                return lhs.compareTo(rhs);
+            }
+        });
+        // setting the listview
+        moview.setAdapter(adapter);
+
+        // when a list item is clicked -> remove from listview and sharedpreference
+        moview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                // selected item string
+                String film = (String) adapterView.getItemAtPosition(i);
+
+                // remove from listview
+                adapter.remove(adapter.getItem(i));
+
+                // remove from sharedpreference
+                prefs = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.remove(film);
+                editor.apply();
+
+                Toast toast = Toast.makeText(WatchList.this, "Film removed from list!", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
+    }
+
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // saveguard for screen rotation
+        outState.putString("activity", "main");
+    }
+
+    public void onRestoreInstanceState(Bundle inState) {
+        super.onRestoreInstanceState(inState);
+
+        // obtaining string
+        String from_activity = inState.getString("activity");
+        // setting the listview
+        Setter(from_activity);
     }
 }
